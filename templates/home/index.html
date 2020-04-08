@@ -1,0 +1,142 @@
+{% extends 'bace.html' %}
+{% load static %}
+{% block body %}
+    <!-- Banner Area Starts -->
+    <section class="banner-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5">
+                    <h4>Caring for better life</h4>
+                    <h1>Leading the way in medical excellence</h1>
+                    <p>Earth greater grass for good. Place for divide evening yielding them that. Creeping beginning over gathered brought.</p>
+                    <a href="" class="template-btn mt-3">take appointment</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Banner Area End -->
+
+    <!-- Feature Area Starts -->
+    <section class="feature-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-feature text-center item-padding">
+                        <img src="{% static 'static_root/images/feature1.png' %}" alt="">
+                        <h3>advance technology</h3>
+                        <p class="pt-3">Creeping for female light years that lesser can't evening heaven isn't bearing tree appear</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-feature text-center item-padding mt-4 mt-md-0">
+                        <img src="{% static 'static_root/images/feature2.png' %}" alt="">
+                        <h3>comfortable place</h3>
+                        <p class="pt-3">Creeping for female light years that lesser can't evening heaven isn't bearing tree appear</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-feature text-center item-padding mt-4 mt-lg-0">
+                        <img src="{% static 'static_root/images/feature3.png' %}" alt="">
+                        <h3>quality equipment</h3>
+                        <p class="pt-3">Creeping for female light years that lesser can't evening heaven isn't bearing tree appear</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-feature text-center item-padding mt-4 mt-lg-0">
+                        <img src="{% static 'static_root/images/feature4.png' %}" alt="">
+                        <h3>friendly staff</h3>
+                        <p class="pt-3">Creeping for female light years that lesser can't evening heaven isn't bearing tree appear</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Feature Area End -->
+
+{% include 'snippets/clinic.html' %}
+    <!-- Department Area Starts -->
+    <section class="department-area section-padding4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-top text-center">
+                        <h2>Popular department</h2>
+                        <p>Green above he cattle god saw day multiply under fill in the cattle fowl a all, living, tree word link available in the service for subdue fruit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="department-slider owl-carousel">
+                        {% for depart in department %}
+                        <div class="single-slide">
+                            <div class="slide-img">
+                                <img src="{{ depart.image.url }}" alt="" class="img-fluid">
+                                <div class="hover-state">
+                                    <a href="#"><i class="fa fa-stethoscope"></i></a>
+                                </div>
+                            </div>
+                            <div class="single-department item-padding text-center">
+                                <h3>{{depart.name}}</h3>
+                                <p>{{ depart.description }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Department Area Starts -->
+
+    <!-- Patient Area Starts -->
+
+{% include 'snippets/patient.html' %}
+
+    <!-- Patient Area Starts -->
+
+    <!-- Specialist Area Starts -->
+    <section class="specialist-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-top text-center">
+                        <h2>Our specialish</h2>
+                        <p>Green above he cattle god saw day multiply under fill in the cattle fowl a all, living, tree word link available in the service for subdue fruit.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for special in specialish %}
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-doctor mb-4 mb-lg-0">
+                        <div class="doctor-img">
+                            <img src="{{ special.image.url }}" alt="" class="img-fluid">
+                        </div>
+                        <div class="content-area">
+                            <div class="doctor-name text-center">
+                                <h3>{{ special.name }}</h3>
+                                <h6>{{ special.title_jop }}</h6>
+                            </div>
+                            <div class="doctor-text text-center">
+                                <p>{{ special.bio }}</p>
+                                <ul class="doctor-icon">
+                                    <li><a href="{{ special.facbook_url }}"><i class="fa fa-facebook"></i><a></li>
+                                    <li><a href="{{ special.twitter_url }}"><i class="fa fa-twitter"></i><a></li>
+                                    <li><a href="{{ special.linkedin_url }}"><i class="fa fa-linkedin"></i><a></li>
+                                    <li><a href="{{ special.pinterest_url }}"><i class="fa fa-pinterest"></i><a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- Specialist Area Starts -->
+
+    {% include "snippets/hotline.html" %}
+
+    {% endblock %}
