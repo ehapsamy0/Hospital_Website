@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+import django_heroku
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -52,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -132,11 +133,18 @@ USE_TZ = True
 # Static Settings
 STATIC_URL = '/static/'
 
+
+
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static')
+    os.path.join(BASE_DIR,'staticfiles')
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR,'static','static_root')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles','static_root')
 
 
 
@@ -145,4 +153,7 @@ STATIC_ROOT = os.path.join(BASE_DIR,'static','static_root')
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'static','media_root')
+MEDIA_ROOT = os.path.join(BASE_DIR,'staticfiles','media_root')
+
+
+django_heroku.settings(locals())
